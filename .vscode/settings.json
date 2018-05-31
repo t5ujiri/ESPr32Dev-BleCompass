@@ -1,0 +1,6 @@
+{
+    "terminal.integrated.env.osx": {
+        "PATH": "/Users/takumiito/.platformio/penv/bin:/Users/takumiito/.platformio/penv:/Users/takumiito/.gem/ruby/2.3.0/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/share/dotnet:/opt/X11/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Xamarin Workbooks.app/Contents/SharedSupport/path-bin:/Users/takumiito/.yadr/bin:/Users/takumiito/.yadr/bin/yadr",
+        "PLATFORMIO_CALLER": "vscode"
+    }
+}
