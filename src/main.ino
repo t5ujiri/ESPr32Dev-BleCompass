@@ -97,7 +97,6 @@ BLECharacteristic * pCharacteristic;
 
 void setup() 
 {
-  
   Serial.begin(115200);
   
   // Before initializing the IMU, there are a few settings
@@ -126,9 +125,11 @@ void setup()
   BLEService *pService = pServer->createService(SERVICE_UUID);
   pCharacteristic = pService->createCharacteristic(
     CHARACTERISTIC_UUID,
-    BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE
+    BLECharacteristic::PROPERTY_READ | 
+    BLECharacteristic::PROPERTY_NOTIFY
   );
-  pCharacteristic->setValue("HelloWorld");
+  pCharacteristic->setWriteProperty(true);
+  pCharacteristic->setValue("Hello World!");
   pService->start();
   BLEAdvertising *pAdvertising = pServer->getAdvertising();
   pAdvertising->start();
@@ -174,7 +175,7 @@ void loop()
     // printAttitude(imu.ax, imu.ay, imu.az, 
     //              -imu.my, -imu.mx, imu.mz);
     // Serial.println();
-    buf = "";
+    buf = "v:";
     buf += String(imu.ax);
     buf += ",";
     buf += String(imu.ay);
@@ -189,6 +190,7 @@ void loop()
     buf.toCharArray(c_buf, buf.length());
     
     pCharacteristic->setValue(c_buf);
+    pCharacteristic->notify();
     lastPrint = millis(); // Update lastPrint time
   }
 }
